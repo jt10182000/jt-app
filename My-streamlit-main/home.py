@@ -13,7 +13,7 @@ def show_portfolio():
             Page("My-streamlit-main/pages/learnings.py", "🧠 What I Have Learned", "3️⃣", in_section=True),
 
             Section("Sample Projects", "📂"),
-            Page("My-streamlit-main/pages/analyzer.py", "📝Basic Sentiment Analyzer", "1️⃣", in_section=True),
+            Page("My-streamlit-main/pages/analyzer.py", "📝 Basic Sentiment Analyzer", "1️⃣", in_section=True),
             Page("My-streamlit-main/pages/classification.py", "Fruit Identification", "2️⃣", in_section=True),
             Page("My-streamlit-main/pages/prediction.py", "📊 Prediction", "3️⃣", in_section=True),
 
@@ -36,7 +36,6 @@ st.markdown("""<a href="/photographer/thinkstock-83786">Thinkstock</a> on <a hre
 st.warning("Please note that when on Streamlit.app, the [Image Classification] pages might not work due to the memory limitations of 'Free Tier' hosting on Streamlit.") 
 st.info("For more info. Contact [Toquero, Jessa O.](https://www.facebook.com/jessa.toquero.942?mibextid=JRoKGi) on Facebook", "https://www.instagram.com/toquero.jessa?igsh=MXdnaGY0Z2hzNzJqag==) on Instagram")
 st.markdown("---")
-
 
 # Expandable section for history, purpose, and usage
 with st.expander("History, Purpose and Usage"):
@@ -116,3 +115,12 @@ footer {visibility: hidden;}
 
 # Apply CSS to hide Streamlit menu and footer
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+# Additional Section (Example)
+st.markdown("### Additional Section")
+st.write("This is some additional content that you may want to include.")
+
+# Final closing remarks
+st.markdown("---")
+st.markdown("Thank you for exploring our Streamlit Application Project!")
+
