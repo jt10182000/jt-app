@@ -1,41 +1,56 @@
-
-
-import streamlit as st
-import pandas as pd
+import numpy as np
 import pickle
-from nltk.corpus import names
+import streamlit as st
+import sklearn
+model=pickle.load(open("trained_model.sav",'rb'))
+#model=pickle.load(open("..train_model.sav",'rb'))
 
-# Load the trained Naive Bayes classifier from the saved file
-filename = 'pages/sentimentAnalyzerTest_Model.sav'
-with open(filename, 'rb') as file:
-    loaded_model = pickle.load(file)
+crops=['rice', 'maize', 'chickpea', 'kidneybeans', 'pigeonpeas',
+       'mothbeans', 'mungbean', 'blackgram', 'lentil', 'pomegranate',
+       'banana', 'mango', 'grapes', 'watermelon', 'muskmelon', 'apple',
+       'orange', 'papaya', 'coconut', 'cotton', 'jute', 'coffee']
+crops.sort()
+labels=[ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,
+       17, 18, 19, 20, 21]
+label_crops=dict(zip(labels,crops))
+html_code = '''
+<h1 style="color:blue; text-align:center">Crop Recommendation System</h1>
+'''
+## Function to predict which crop is best suited for particular region
+def CropRecommendation(input_data):
 
-st.title("Weather Forecast Predictor :sun_behind_cloud:")
-st.subheader("Enter levels of different factors to predict the weather:")
+    input_data=np.array(input_data).reshape(1,-1)
+    recommend=model.predict(input_data)
+    print(recommend)
+    print(label_crops[recommend[0]])
+    return label_crops[recommend[0]]
 
-# User inputs for different factors
-temperature_input = st.slider("Temperature (°C): ", -50, 50)
-humidity_input = st.slider("Humidity Level (%): ", 0, 100)
-wind_speed_input = st.slider("Wind Speed (km/h): ", 0, 150)
-pressure_input = st.slider("Atmospheric Pressure (hPa): ", 900, 1100)
 
-# Function to make a prediction
-def predict_weather(temperature, humidity, wind_speed, pressure):
-    if temperature == 0 and humidity == 0 and wind_speed == 0 and pressure == 900:
-        return "No significant factors entered"
-    else:
-        features = {
-            'temperature': temperature,
-            'humidity': humidity,
-            'wind_speed': wind_speed,
-            'pressure': pressure
-        }
-        # Replace 'loaded_model.classify' with your actual prediction model/method
-        prediction = loaded_model.classify(features)
-        return prediction
 
-# Display button and result
-if st.button('Predict'):
-    weather_prediction = predict_weather(temperature_input, humidity_input, wind_speed_input, pressure_input)
-    st.text("The predicted weather is:")
-    st.text_area(label="", value=weather_prediction, height=100)
+
+def main():
+    st.markdown(html_code,unsafe_allow_html=True)
+
+
+
+    #Required Data
+# Nitrogen, Phosphorous,Potassium,Temperature,Rainfall,Ph
+    nitrogen=st.text_input("Enter Nitrogen content in soil ")
+    phosphorous=st.text_input("Enter Phosphorous content in soil ")
+    potassium=st.text_input("Enter Potassium content in soil ")
+    temperature=st.text_input("Enter Temperature in Celsius")
+    humidity=st.text_input("Enter relative humidity in %")
+    ph=st.text_input("Enter ph value of the soil")
+    rainfall=st.text_input("Enter rainfall in mm")
+
+    BestCrop=""
+    if st.button("Recommend Crop"):
+
+        print(nitrogen)
+        if( nitrogen and  phosphorous and  potassium and  temperature and  rainfall and ph and humidity):
+            BestCrop=CropRecommendation([int(nitrogen),int(phosphorous),int(potassium),float(temperature),float(humidity),float(ph),float(rainfall)])
+            st.success(BestCrop)
+        else :
+            st.write("Enter Correct Values")
+if __name__=='__main__':
+    main()
