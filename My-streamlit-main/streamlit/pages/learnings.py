@@ -1,11 +1,23 @@
 import streamlit as st
+from PIL import Image
+import os
+
+# Set page configuration
 st.set_page_config(layout="wide", page_title="Learnings")
 
-st.title("🧠What I have Learned")
+# Title and Header
+st.title("🧠What I haved Learned")
 st.header('💭Learnings..!')
 
-st.image("./ml.jpg")
+# Image
+image_path = "My-streamlit-main/ml.jpg"
+if os.path.exists("My-streamlit-main/ml.jpg"):
+    image = Image.open("My-streamlit-main/ml.jpg")
+    st.image(image)
+else:
+    st.warning("Image not found. Please check the file path.")
 
+# Main Markdown Content
 st.markdown("""
 #
                 Learnings from Quantitative Methods: Building Foundations for the Future:
@@ -27,9 +39,9 @@ From basic coding and data analysis to advanced applications like image classifi
 to make significant contributions in my chosen field and beyond.         
             """, unsafe_allow_html=True)
 
+# Expander with Practical Applications
 with st.expander("🔧Practical Applications"):
     st.markdown("""
-    
     #
                 Image Classification:
 One exciting use of the skills learned in Quantitative Methods is image classification. 
