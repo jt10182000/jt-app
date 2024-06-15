@@ -62,10 +62,13 @@ def classify_fruit(image):
     features = np.array([[mass, width, height, color_score]])
 
     # Predict using the trained model
-    fruit_label = model.predict(features)[0]
-    fruit_name = fruit_data[fruit_data['fruit_label'] == fruit_label]['fruit_name'].values[0]
-
-    return fruit_name
+    try:
+        fruit_label = model.predict(features)[0]
+        fruit_name = fruit_data[fruit_data['fruit_label'] == fruit_label]['fruit_name'].values[0]
+        return fruit_name
+    except Exception as e:
+        st.error(f"Error during prediction: {e}")
+        return None
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
