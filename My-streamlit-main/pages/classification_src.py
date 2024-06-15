@@ -17,7 +17,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
-st.title("Fruit Identification")
+st.title("Fruit Classification")
 st.header("Supported fruits: lemon, apple, mandarin, orange")
 st.text("Upload a clear image of a fruit")
 
