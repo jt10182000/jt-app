@@ -33,7 +33,7 @@ st.markdown("### FINAL REQUIREMENTS PRESENTED BY:")
 st.header("Toquero, Jessa of BSIS 3B")
 st.image("./M6.jpg")
 st.markdown("""<a href="/photographer/thinkstock-83786">Thinkstock</a> on <a href="/">Freeimages.com</a>""", unsafe_allow_html=True)
-
+st.warning("Please note that when on Streamlit.app, the [Image Classification] pages might not work due to the memory limitations of 'Free Tier' hosting on Streamlit.") 
 st.info("For more info. Contact [Toquero, Jessa O.](https://www.facebook.com/jessa.toquero.942?mibextid=JRoKGi) on Facebook", "https://www.instagram.com/toquero.jessa?igsh=MXdnaGY0Z2hzNzJqag==) on Instagram")
 st.markdown("---")
 
