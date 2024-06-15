@@ -29,7 +29,6 @@ st.image("./M4.jpg")
 st.markdown("""<a href="/photographer/thinkstock-83786">Thinkstock</a> on <a href="/">Freeimages.com</a>""",unsafe_allow_html=True,)
 
 st.info("For more info. Contact [Toquero, Jessa O.](/https://www.facebook.com/jessa.toquero.942?mibextid=JRoKGi) on Fb", "https://www.instagram.com/toquero.jessa?igsh=MXdnaGY0Z2hzNzJqag==) on IG")
-st.info("👨‍🔧 Please take note when on streamlit.app the [Image Classification] pages are not working due to Memory Limitation of 'Free Tier' hosting of Streamlit") 
 st.markdown("---")
 
 with st.expander("History, Purpose and, Usage"""):
