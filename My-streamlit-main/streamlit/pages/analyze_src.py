@@ -1,3 +1,9 @@
+import streamlit as st
+
+
+st.header('Sentiment Analyzer App')
+st.subheader('This model was trained using a dataset')
+st.code('''
 
 import streamlit as st
 import pickle
@@ -62,8 +68,9 @@ def main():
 
         # Button to save the trained classifier to a pickle file
         if st.button("Save Model"):
-            save_model_to_pickle(classifier, 'trained_classifier.pkl')
+            save_model_to_pickle(classifier, 'My-streamlit-main/trained_classifier.pkl')
             st.success("Model saved to 'My-streamlit-main/trained_classifier.pkl'")
 
 if __name__ == '__main__':
     main()
+''')
