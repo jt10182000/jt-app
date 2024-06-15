@@ -2,16 +2,23 @@ import streamlit as st
 
 st.title("Description of Different Streamlit Application")
 
-# Insert custom CSS for background with GIF from local file
+# Insert custom HTML for background video
 st.markdown(
     f"""
     <style>
-    body {{
-        background-image: url('./pic/bgk.gif'); /* Adjust path as per your folder structure */
-        background-size: cover;
-        background-position: center;
-        }}
+    .bg-video {{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
+    }}
     </style>
+    <video autoplay loop muted class="bg-video">
+        <source src="./pic/bgk.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     """,
     unsafe_allow_html=True
 )
