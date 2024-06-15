@@ -1,54 +1,76 @@
 import streamlit as st
 
 
-st.header('Sentiment Analyzer Source Code')
-st.subheader('This python code is implemented for Streamlit')
+st.header('Sentiment Analyzer App')
+st.subheader('This model was trained using a dataset')
 st.code('''
-       import streamlit as st
-import pandas as pd
+
+import streamlit as st
 import pickle
-from nltk.corpus import names
+import numpy as np
+from nltk.classify import NaiveBayesClassifier
 
-
-# Set up the title and description
-st.title("ToquEmotions Analyzer:")
-st.markdown("""
-Welcome to Toquero Streamlit app for analyzing different feelings.
-Enter your current feeling in the text box below, and let's see what the sentiment analyzer says!
-""")
-
-# Input field for user to enter their feeling
-message = st.text_input("Tell me what you feel today:")
-
-# Load the trained Naive Bayes classifier from the saved file
-model_filename = 'My-streamlit-main/pages/sentimentAnalyzerTest_model.sav'
-with open(model_filename, 'rb') as file:
-    loaded_model = pickle.load(file)
-
-# Define function to extract features from the input message
+# Define features (words) and their corresponding labels (emotions)
 def word_features(words):
-    return {word: True for word in words}
+    return dict([(word, True) for word in words])
 
-# Function to determine and display the sentiment
-def classify_feeling():
-    if message:
-        message_tone = loaded_model.classify(word_features(message.split()))
+# Define emotions and their associated words
+emotions = {
+    'happy': ['happy', 'joyful', 'excited'],
+    'sad': ['sad', 'unhappy', 'depressed'],
+    'angry': ['angry', 'mad', 'furious'],
+    'excited': ['excited', 'thrilled', 'eager'],
+    'nervous': ['nervous', 'anxious', 'worried'],
+    'scared': ['scared', 'fearful', 'terrified']
+}
 
-        # Determine the sentiment and corresponding emoji
-        if message_tone == 'happy':
-            st.write("You seem happy! :smile:")
-        elif message_tone == 'sad':
-            st.write("You seem sad. :pensive:")
-        elif message_tone == 'angry':
-            st.write("You seem angry. :rage:")
-        elif message_tone == 'nervous':
-            st.write("You seem nervous. :grimacing:")
-        else:
-            st.write("Hmm, I'm not sure about that feeling. :thinking_face:")
-    else:
-        st.write("Please enter a feeling to analyze.")
+# Generate training set for each emotion
+train_set = [(word_features(word.split()), emotion)
+             for emotion, words in emotions.items()
+             for word in words]
 
-# Button to trigger the sentiment analysis
-st.button('Analyze Feeling', on_click=classify_feeling)
+# Train the Naive Bayes classifier
+classifier = NaiveBayesClassifier.train(train_set)
 
-    ''')
+# Function to predict emotions
+def predict_emotions(docx):
+    results = classifier.classify(word_features(docx.split()))
+    return results
+
+# Function to get prediction probabilities
+def get_prediction_proba(docx):
+    results = classifier.prob_classify(word_features(docx.split()))
+    probabilities = {label: results.prob(label) for label in results.samples()}
+    return probabilities
+
+# Function to save the trained classifier to a pickle file
+def save_model_to_pickle(model, filename):
+    with open(filename, 'wb') as file:
+        pickle.dump(model, file)
+
+# Main Application
+def main():
+    st.title("Emotion Classifier App")
+
+    # Text input for user to enter a sentence
+    sentence = st.text_input("Enter a sentence:")
+
+    if sentence:
+        # Classify the sentence
+        sentiment = predict_emotions(sentence)
+        probabilities = get_prediction_proba(sentence)
+
+        st.write(f"Predicted Emotion: {sentiment}")
+
+        st.write("Prediction Probabilities:")
+        for emotion, probability in probabilities.items():
+            st.write(f"{emotion}: {probability:.4f}")
+
+        # Button to save the trained classifier to a pickle file
+        if st.button("Save Model"):
+            save_model_to_pickle(classifier, 'trained_classifier.pkl')
+            st.success("Model saved to 'trained_classifier.pkl'")
+
+if __name__ == '__main__':
+    main()
+''')
