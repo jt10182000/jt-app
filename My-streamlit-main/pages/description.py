@@ -7,7 +7,7 @@ st.markdown(
     f"""
     <style>
     .bg-video {{
-        position: fixed;
+        position: whole screen;
         right: 0;
         bottom: 0;
         min-width: 100%;
