@@ -37,8 +37,6 @@ st.markdown("""<a href="/photographer/thinkstock-83786">Thinkstock</a> on <a hre
 st.info("For more info. Contact [Toquero, Jessa O.](https://www.facebook.com/jessa.toquero.942?mibextid=JRoKGi) on Facebook", "https://www.instagram.com/toquero.jessa?igsh=MXdnaGY0Z2hzNzJqag==) on Instagram")
 st.markdown("---")
 
-# Display the image "backs.jpg"
-st.image("./My-streamlit-main/backs.jpg")
 
 # Expandable section for history, purpose, and usage
 with st.expander("History, Purpose and Usage"):
