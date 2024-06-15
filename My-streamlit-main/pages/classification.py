@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 import os
 
-st.title("Fruit Identification")
+st.title("Fruit Classification")
 st.header("Supported fruits: lemon, apple, mandarin, orange")
 st.text("Upload a clear image of a fruit")
 
@@ -31,10 +31,16 @@ else:
 
 uploaded_file = st.file_uploader("Enter image", type=["png", "jpeg", "jpg"])
 
-def simulate_features(image):
-    """Simulate mass and color score features for demonstration purposes."""
-    mass = np.random.randint(50, 500)  # Random mass between 50 and 500 grams
-    color_score = np.random.uniform(0, 1)  # Random color score between 0 and 1
+# Calculate statistics from the training data
+mass_mean = fruit_data['mass'].mean()
+mass_std = fruit_data['mass'].std()
+color_score_mean = fruit_data['color_score'].mean()
+color_score_std = fruit_data['color_score'].std()
+
+def simulate_features():
+    """Simulate mass and color score features based on training data statistics."""
+    mass = np.random.normal(mass_mean, mass_std)  # Simulate mass based on normal distribution
+    color_score = np.random.normal(color_score_mean, color_score_std)  # Simulate color score based on normal distribution
 
     return mass, color_score
 
@@ -44,7 +50,7 @@ def classify_fruit(image):
         return "Model not trained yet."
 
     # Simulate feature extraction from the image
-    mass, color_score = simulate_features(image)
+    mass, color_score = simulate_features()
 
     # Prepare feature vector
     features = np.array([[mass, color_score]])
