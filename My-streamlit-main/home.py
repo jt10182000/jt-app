@@ -42,6 +42,8 @@ st.info("For more info, contact [Toquero, Jessa O.](https://www.facebook.com/jes
 st.info("Contact [Toquero, Jessa O.](https://www.instagram.com/toquero.jessa?igsh=MXdnaGY0Z2hzNzJqag==) on Instagram", icon="📧")
 st.markdown("---")
 
+
+st.image("My-streamlit-main/blacks.jpg")
 # Expander section for history, purpose, and usage
 with st.expander("History, Purpose, and Usage"):
     st.markdown(
