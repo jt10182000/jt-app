@@ -1,7 +1,6 @@
-
+import os
 import streamlit as st
 import pickle
-import numpy as np
 from nltk.classify import NaiveBayesClassifier
 
 # Define features (words) and their corresponding labels (emotions)
@@ -39,7 +38,8 @@ def get_prediction_proba(docx):
 
 # Function to save the trained classifier to a pickle file
 def save_model_to_pickle(model, filename):
-    with open(filename, 'wb') as file:
+    save_path = os.path.join(os.getcwd(), filename)  # Save in current working directory
+    with open(save_path, 'wb') as file:
         pickle.dump(model, file)
 
 # Main Application
@@ -63,7 +63,7 @@ def main():
         # Button to save the trained classifier to a pickle file
         if st.button("Save Model"):
             save_model_to_pickle(classifier, 'trained_classifier.pkl')
-            st.success("Model saved to 'My-streamlit-main/trained_classifier.pkl'")
+            st.success(f"Model saved to '{os.getcwd()}/trained_classifier.pkl'")
 
 if __name__ == '__main__':
     main()
