@@ -2,19 +2,14 @@ import streamlit as st
 
 st.title("About Jessa 👦")
 
-
-
 st.title("🖼️Self Gallery")
 
-
-image_paths = ["./pic/M4.jpg", "./pic/M1.jpg", "./pic/M2.jpg"]
-
+image_paths = ["My-streamlit-main/pic/M4.jpg", "My-streamlit-main/pic/M1.jpg", "My-streamlit-main/pic/M2.jpg"]
 
 cols = st.columns(len(image_paths))
 
 for col, image_path in zip(cols, image_paths):
     col.image(image_path)
-
 
 st.header("Toquero, Jessa O.")
 
@@ -60,23 +55,16 @@ with st.expander("Who am I 10 years From now??"):
                My story will be about a constant pursuit of knowledge, creative thinking, and a strong commitment to making a positive impact.
     """, unsafe_allow_html=True)
 
-import streamlit as st
-
-
-images = [
-    {"path": "./pic/fam2.jpg", "caption": "Through every high and low, your unwavering support has been our anchor. This family picture is not just a snapshot; it's a testament to the love and strength we share. Thank you for being by my side, making every step of this journey meaningful and memorable."},
-    {"path": "./pic/Fri1.jpg", "caption": "Grateful for a friend like you who's been with me through every twist and turn of this journey. Your support has been a beacon of light in the darkest of times. Thank you for being there, always. 🙏💫 #FriendshipGoals #Gratitude"},
-    {"path": "./pic/us3.jpg", "caption": "Sharing laughter, learning, and countless memories together. Classmates today, friends forever. 📚✨"}
-]
-
-
 st.title("🖼️Gallery")
 
+images = [
+    {"path": "My-streamlit-main/pic/fam2.jpg", "caption": "Through every high and low, your unwavering support has been our anchor. This family picture is not just a snapshot; it's a testament to the love and strength we share. Thank you for being by my side, making every step of this journey meaningful and memorable."},
+    {"path": "My-streamlit-main/pic/Fri1.jpg", "caption": "Grateful for a friend like you who's been with me through every twist and turn of this journey. Your support has been a beacon of light in the darkest of times. Thank you for being there, always. 🙏💫 #FriendshipGoals #Gratitude"},
+    {"path": "My-streamlit-main/pic/us3.jpg", "caption": "Sharing laughter, learning, and countless memories together. Classmates today, friends forever. 📚✨"}
+]
 
 for image in images:
     st.image(image["path"], caption=image["caption"])
-
-
 
 st.markdown(
     """
