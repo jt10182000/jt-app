@@ -4,7 +4,7 @@ st.title("Description of Different Streamlit Application")
 
 
 st.header('Simple Sentiment Analyzer App')
-st.image("./pic/analyze.jpg")
+st.image("./pic/analyze.png")
 
 with st.expander("🔮Sentiment Analyzer"):
     st.markdown("""
