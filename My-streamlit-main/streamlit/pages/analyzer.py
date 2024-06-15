@@ -3,6 +3,10 @@ import streamlit as st
 import pickle
 from nltk.classify import NaiveBayesClassifier
 
+# Assuming the image file is in the same directory as this script or in a subdirectory named 'pic'
+# Check and adjust the path as necessary
+# st.image("My-streamlit-main/pic/analyze.png")
+
 # Define features (words) and their corresponding labels (emotions)
 def word_features(words):
     return dict([(word, True) for word in words])
