@@ -4,7 +4,7 @@ st.title("Description of Different Streamlit Application")
 
 
 st.header('Simple Sentiment Analyzer App')
-st.image("./pic/analyze.png")
+st.image("My-streamlit-main/pic/analyze.png")
 
 with st.expander("🔮Sentiment Analyzer"):
     st.markdown("""
@@ -21,24 +21,24 @@ dissatisfaction. This tool is widely used in customer feedback analysis, social 
                 
     """, unsafe_allow_html=True)
 
-st.header('Dog Breed Image Classification')
-st.image("./pic/image.png")
+st.header('Fruit Image Classification')
+st.image("My-streamlit-main/pic/Fruit1.png", "My-streamlit-main/pic/Fruit2.png")
 
-with st.expander("Dog Breed Image Classification Project"):
+with st.expander("Fruit Image Classification Project"):
     st.markdown("""
     
     #
                 Image Classification
-In my image classification project, the focus is on accurately identifying different types of dog breeds from uploaded images. 
-The project aims to classify images into eight distinct categories: Beagle, Dachshund, French Bulldog, German Shepherd, Labrador, Poodle, Rottweiler, and Golden Retriever. 
-The goal is to analyze and categorize the dog breed images based on their distinct features. The project utilizes a comprehensive dataset of labeled dog breed images, comprising thousands of images for each breed. 
+In my image classification project, the focus is on accurately identifying different kinds of Fruits from uploaded images. 
+The project aims to classify images into the following distinct categories: lemon, apple, orange, and mandarin.
+The goal is to analyze and categorize the Fruit images based on their distinct features. The project utilizes a comprehensive dataset of labeled Fruit Identification images, comprising thousands of images for each fruits. 
 This ensures a diverse and representative sample for training and testing the model.
 
                 
     """, unsafe_allow_html=True)
 
 st.header('🔍Prediction')
-st.image("./pic/predict.jpg")
+st.image("My-streamlit-main/pic/predictresult.png")
 
 with st.expander("Sentiment Analyzer"):
     st.markdown("""
