@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 import os
 
-st.title("Fruit Classification")
+st.title("Fruit Identification")
 st.header("Supported fruits: lemon, apple, mandarin, orange")
 st.text("Upload a clear image of a fruit")
 
@@ -36,13 +36,19 @@ mass_mean = fruit_data['mass'].mean()
 mass_std = fruit_data['mass'].std()
 color_score_mean = fruit_data['color_score'].mean()
 color_score_std = fruit_data['color_score'].std()
+width_mean = fruit_data['width'].mean()
+width_std = fruit_data['width'].std()
+height_mean = fruit_data['height'].mean()
+height_std = fruit_data['height'].std()
 
-def simulate_features():
-    """Simulate mass and color score features based on training data statistics."""
+def simulate_features(image):
+    """Simulate mass, width, height, and color score features based on training data statistics."""
     mass = np.random.normal(mass_mean, mass_std)  # Simulate mass based on normal distribution
+    width = np.random.normal(width_mean, width_std)  # Simulate width based on normal distribution
+    height = np.random.normal(height_mean, height_std)  # Simulate height based on normal distribution
     color_score = np.random.normal(color_score_mean, color_score_std)  # Simulate color score based on normal distribution
 
-    return mass, color_score
+    return mass, width, height, color_score
 
 def classify_fruit(image):
     """Classify the fruit based on the simulated features."""
@@ -50,10 +56,10 @@ def classify_fruit(image):
         return "Model not trained yet."
 
     # Simulate feature extraction from the image
-    mass, color_score = simulate_features()
+    mass, width, height, color_score = simulate_features(image)
 
     # Prepare feature vector
-    features = np.array([[mass, color_score]])
+    features = np.array([[mass, width, height, color_score]])
 
     # Predict using the trained model
     fruit_label = model.predict(features)[0]
@@ -71,7 +77,7 @@ if uploaded_file is not None:
         st.write("Training model as it does not exist.")
         
         # Prepare training data
-        X = fruit_data[['mass', 'color_score']]
+        X = fruit_data[['mass', 'width', 'height', 'color_score']]
         y = fruit_data['fruit_label']
 
         # Split the data into training and testing sets
