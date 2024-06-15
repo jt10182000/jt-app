@@ -2,26 +2,53 @@ import streamlit as st
 
 st.title("Description of Different Streamlit Application")
 
-# Insert custom HTML for background video
+# Insert custom HTML and CSS for simulated GIF animation
 st.markdown(
-    f"""
+    """
     <style>
-    .bg-video {{
-        position: whole screen;
+    .bg-animation {
+        position: fixed;
         right: 0;
         bottom: 0;
-        min-width: 100%;
-        min-height: 100%;
+        width: 100%;
+        height: 100%;
         z-index: -1;
-    }}
+        animation: animateBackground 10s linear infinite; /* Adjust animation duration as needed */
+    }
+    
+    @keyframes animateBackground {
+        100% { background-image: url('./pic/bgk.png'); } /* Replace with your PNG frames */
+    }
     </style>
-    <video autoplay loop muted class="bg-video">
-        <source src="./pic/bgk.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <div class="bg-animation"></div>
     """,
     unsafe_allow_html=True
 )
+
+st.header('Simple Sentiment Analyzer App')
+st.image("My-streamlit-main/pic/analyze.png", use_column_width=True)
+
+with st.expander("🔮 Sentiment Analyzer"):
+    st.markdown("""
+    A Sentiment Analyzer is a powerful tool in natural language processing that evaluates text to determine the underlying sentiment or emotional tone.
+    """)
+
+st.header('Fruit Image Classification')
+st.image("My-streamlit-main/pic/Fruit1.png", "My-streamlit-main/pic/Fruit2.png", use_column_width=True)
+
+with st.expander("Fruit Image Classification Project"):
+    st.markdown("""
+    Image Classification: Classify fruit images into different categories.
+    """)
+
+st.header('🔍 Prediction')
+st.image("My-streamlit-main/pic/predictresult.png", use_column_width=True)
+
+with st.expander("Sentiment Analyzer"):
+    st.markdown("""
+    A Sentiment Analyzer is a powerful tool in natural language processing.
+    """)
+
 
 st.header('Simple Sentiment Analyzer App')
 st.image("My-streamlit-main/pic/analyze.png")
