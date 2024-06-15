@@ -1,85 +1,56 @@
-
-from PIL import Image
-import streamlit as st
 import numpy as np
-import pandas as pd
-import joblib
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
-import os
+import pickle
+import streamlit as st
+import sklearn
+model=pickle.load(open("trained_model.sav",'rb'))
+#model=pickle.load(open("..train_model.sav",'rb'))
 
-st.title("Fruit Identification")
-st.header("Supported fruits: lemon, apple, mandarin, orange")
-st.text("Upload a clear image of a fruit")
+crops=['rice', 'maize', 'chickpea', 'kidneybeans', 'pigeonpeas',
+       'mothbeans', 'mungbean', 'blackgram', 'lentil', 'pomegranate',
+       'banana', 'mango', 'grapes', 'watermelon', 'muskmelon', 'apple',
+       'orange', 'papaya', 'coconut', 'cotton', 'jute', 'coffee']
+crops.sort()
+labels=[ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,
+       17, 18, 19, 20, 21]
+label_crops=dict(zip(labels,crops))
+html_code = '''
+<h1 style="color:blue; text-align:center">Crop Recommendation System</h1>
+'''
+## Function to predict which crop is best suited for particular region
+def CropRecommendation(input_data):
 
-# Load fruit data
-fruit_data = pd.read_csv("fruit.csv", header=None, names=["fruit_label", "mass", "width", "height", "color_score", "fruit_name"])
+    input_data=np.array(input_data).reshape(1,-1)
+    recommend=model.predict(input_data)
+    print(recommend)
+    print(label_crops[recommend[0]])
+    return label_crops[recommend[0]]
 
-# Load the model if it exists
-if os.path.exists('fruit_classifier.sav'):
-    model = joblib.load('fruit_classifier.sav')
-else:
-    model = None
 
-uploaded_file = st.file_uploader("Enter image", type=["png", "jpeg", "jpg"])
 
-def simulate_features(image):
-    """Simulate mass and color score features for demonstration purposes."""
-    # Simulating feature extraction process
-    mass = np.random.randint(50, 500)  # Random mass between 50 and 500 grams
-    color_score = np.random.uniform(0, 1)  # Random color score between 0 and 1
 
-    return mass, color_score
+def main():
+    st.markdown(html_code,unsafe_allow_html=True)
 
-def classify_fruit(image):
-    """Classify the fruit based on the simulated features."""
-    if model is None:
-        return "Model not trained yet."
 
-    # Simulate feature extraction from the image
-    mass, color_score = simulate_features(image)
 
-    # Prepare feature vector
-    features = np.array([[mass, color_score]])
+    #Required Data
+# Nitrogen, Phosphorous,Potassium,Temperature,Rainfall,Ph
+    nitrogen=st.text_input("Enter Nitrogen content in soil ")
+    phosphorous=st.text_input("Enter Phosphorous content in soil ")
+    potassium=st.text_input("Enter Potassium content in soil ")
+    temperature=st.text_input("Enter Temperature in Celsius")
+    humidity=st.text_input("Enter relative humidity in %")
+    ph=st.text_input("Enter ph value of the soil")
+    rainfall=st.text_input("Enter rainfall in mm")
 
-    # Predict using the trained model
-    fruit_label = model.predict(features)[0]
-    fruit_name = fruit_data[fruit_data['fruit_label'] == fruit_label]['fruit_name'].values[0]
+    BestCrop=""
+    if st.button("Recommend Crop"):
 
-    return fruit_name
-
-if uploaded_file is not None:
-    image = Image.open(uploaded_file)
-    st.image(image, caption='Uploaded image', use_column_width=True)
-    st.write("")
-    st.write("Classifying...")
-
-    predicted_fruit = classify_fruit(image)
-
-    if predicted_fruit:
-        st.write(f"The uploaded fruit is {predicted_fruit}.")
-    else:
-        st.write("Fruit classification failed.")
-
-    # Prepare training data
-    X = fruit_data[['mass', 'color_score']]
-    y = fruit_data['fruit_label']
-
-    # Split the data into training and testing sets
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-    # Train the model
-    model = RandomForestClassifier(n_estimators=100, random_state=42)
-    model.fit(X_train, y_train)
-
-    # Make predictions
-    y_pred = model.predict(X_test)
-
-    # Calculate accuracy
-    accuracy = accuracy_score(y_test, y_pred)
-    st.write(f"Model accuracy: {accuracy}")
-
-    # Save the trained model as a .sav file
-    joblib.dump(model, 'fruit_classifier.sav')
-    st.write("Model saved as 'fruit_classifier.sav'")
+        print(nitrogen)
+        if( nitrogen and  phosphorous and  potassium and  temperature and  rainfall and ph and humidity):
+            BestCrop=CropRecommendation([int(nitrogen),int(phosphorous),int(potassium),float(temperature),float(humidity),float(ph),float(rainfall)])
+            st.success(BestCrop)
+        else :
+            st.write("Enter Correct Values")
+if __name__=='__main__':
+    main()
