@@ -43,7 +43,8 @@ st.info("Contact [Toquero, Jessa O.](https://www.instagram.com/toquero.jessa?igs
 st.markdown("---")
 
 
-st.image("My-streamlit-main/blacks.jpg")
+st.image("./blacks.jpg")
+
 # Expander section for history, purpose, and usage
 with st.expander("History, Purpose, and Usage"):
     st.markdown(
