@@ -15,7 +15,7 @@ show_pages(
 
         Section("Sample Projects", "📂"),
         Page("My-streamlit-main/pages/analyzer.py", "📝Basic Sentiment Analyzer", "1️⃣", in_section=True),
-        Page("My-streamlit-main/pages/classification.py", "Fruit Classification", "2️⃣", in_section=True),
+        Page("My-streamlit-main/pages/classification.py", "Fruit Identification", "2️⃣", in_section=True),
         Page("My-streamlit-main/pages/prediction.py", "📊 Prediction", "3️⃣", in_section=True),
 
         Section("Project Source Code", "💻"),
