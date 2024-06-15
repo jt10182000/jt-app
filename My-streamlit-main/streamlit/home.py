@@ -33,7 +33,9 @@ st.markdown("---")
 
 
 
-st.image("My-streamlit-main/backs.jpg")
+st.image("./backs.jpg")
+
+
 with st.expander("History, Purpose and, Usage"""):
     st.markdown("""
     
