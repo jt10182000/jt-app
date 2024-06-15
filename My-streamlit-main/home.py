@@ -40,7 +40,6 @@ st.markdown(
 # Contact information
 st.info("For more info, contact [Toquero, Jessa O.](https://www.facebook.com/jessa.toquero.942?mibextid=JRoKGi) on Facebook", icon="📧")
 st.info("Contact [Toquero, Jessa O.](https://www.instagram.com/toquero.jessa?igsh=MXdnaGY0Z2hzNzJqag==) on Instagram", icon="📧")
-st.warning("Please note that when on Streamlit.app, the [Image Classification] pages might not work due to the memory limitations of 'Free Tier' hosting on Streamlit.") 
 st.markdown("---")
 
 # Expander section for history, purpose, and usage
