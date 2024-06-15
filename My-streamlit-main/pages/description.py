@@ -2,28 +2,6 @@ import streamlit as st
 
 st.title("Description of Different Streamlit Application")
 
-# Insert custom HTML and CSS for simulated GIF animation
-st.markdown(
-    """
-    <style>
-    .bg-animation {
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        animation: animateBackground 10s linear infinite; /* Adjust animation duration as needed */
-    }
-    
-    @keyframes animateBackground {
-        100% { background-image: url('./pic/bgk.png'); } /* Replace with your PNG frames */
-    }
-    </style>
-    <div class="bg-animation"></div>
-    """,
-    unsafe_allow_html=True
-)
 
 st.header('Simple Sentiment Analyzer App')
 st.image("My-streamlit-main/pic/analyze.png", use_column_width=True)
