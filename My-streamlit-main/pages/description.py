@@ -2,19 +2,20 @@ import streamlit as st
 
 st.title("Description of Different Streamlit Application")
 
-# Insert custom CSS for background
+# Insert custom CSS for background with GIF from local file
 st.markdown(
-    """
+    f"""
     <style>
-    body {
-        background-image: url('My-streamlit-mian/backs.jpg'); /* Example background image */
+    body {{
+        background-image: url('./pic/bgk.gif'); /* Adjust path as per your folder structure */
         background-size: cover;
         background-position: center;
-        }
+        }}
     </style>
     """,
     unsafe_allow_html=True
 )
+
 st.header('Simple Sentiment Analyzer App')
 st.image("My-streamlit-main/pic/analyze.png")
 
