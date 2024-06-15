@@ -32,10 +32,6 @@ st.info("For more info. Contact [Toquero, Jessa O.](/https://www.facebook.com/je
 st.markdown("---")
 
 
-
-st.image("./backs.jpg")
-
-
 with st.expander("History, Purpose and, Usage"""):
     st.markdown("""
     
