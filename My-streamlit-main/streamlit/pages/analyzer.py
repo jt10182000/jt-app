@@ -1,11 +1,8 @@
-import os
+
 import streamlit as st
 import pickle
+import numpy as np
 from nltk.classify import NaiveBayesClassifier
-
-# Assuming the image file is in the same directory as this script or in a subdirectory named 'pic'
-# Check and adjust the path as necessary
-# st.image("My-streamlit-main/pic/analyze.png")
 
 # Define features (words) and their corresponding labels (emotions)
 def word_features(words):
@@ -42,13 +39,12 @@ def get_prediction_proba(docx):
 
 # Function to save the trained classifier to a pickle file
 def save_model_to_pickle(model, filename):
-    save_path = os.path.join(os.getcwd(), filename)  # Save in current working directory
-    with open(save_path, 'wb') as file:
+    with open(filename, 'wb') as file:
         pickle.dump(model, file)
 
 # Main Application
 def main():
-    st.title("ToquEmotion Classifier App")
+    st.title("Emotion Classifier App")
 
     # Text input for user to enter a sentence
     sentence = st.text_input("Enter a sentence:")
@@ -67,7 +63,7 @@ def main():
         # Button to save the trained classifier to a pickle file
         if st.button("Save Model"):
             save_model_to_pickle(classifier, 'trained_classifier.pkl')
-            st.success(f"Model saved to '{os.getcwd()}/trained_classifier.pkl'")
+            st.success("Model saved to 'trained_classifier.pkl'")
 
 if __name__ == '__main__':
     main()
