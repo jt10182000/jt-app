@@ -44,7 +44,7 @@ def save_model_to_pickle(model, filename):
 
 # Main Application
 def main():
-    st.title("Emotion Classifier App")
+    st.title("ToquEmotion Classifier App")
 
     # Text input for user to enter a sentence
     sentence = st.text_input("Enter a sentence:")
