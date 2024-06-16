@@ -29,7 +29,7 @@ with st.expander("Fruit Image Classification Project"):
 st.header('🔍Prediction')
 st.image("My-streamlit-main/pic/predictresult.png", width=600)  # Adjusted width
 
-with st.expander(""):
+with st.expander("Cro Recommendation App Prediction"):
     st.markdown("""
     With advancements in natural language processing, predictive analytics has become indispensable for anticipating outcomes based on data-driven insights. 
     In this application, we harness the power of machine learning algorithms to make accurate predictions from input data. 
