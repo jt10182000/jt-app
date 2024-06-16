@@ -2,12 +2,11 @@ import streamlit as st
 
 st.title("Description of Different Streamlit Application")
 
-
 st.header('Simple Sentiment Analyzer App')
-st.image("My-streamlit-main/pic/analyze.png", use_column_width=True)
+st.image("My-streamlit-main/pic/analyze.png")
 
-with st.expander("🔮 Sentiment Analyzer"):
-    st.markdown("""
+with st.expander("🔮Sentiment Analyzer"):
+st.markdown("""
     A Sentiment Analyzer is a powerful tool in natural language processing that evaluates text to determine the underlying sentiment or emotional tone.
     """)
 
