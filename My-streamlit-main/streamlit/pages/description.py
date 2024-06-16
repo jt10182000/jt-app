@@ -29,12 +29,12 @@ with st.expander("Fruit Image Classification Project"):
 st.header('🔍Prediction')
 st.image("My-streamlit-main/pic/predictresult.png", width=600)  # Adjusted width
 
-with st.expander("Sentiment Analyzer"):
+with st.expander("Cro Recommendation App Prediction"):
     st.markdown("""
-    A Sentiment Analyzer is a powerful tool in natural language processing that evaluates text to determine the underlying sentiment or emotional tone. It uses algorithms 
-    and machine learning models to classify sentences or larger bodies of text as positive, negative, or neutral. The analyzer examines various
-    linguistic features such as word choice, context, and syntax to identify feelings and attitudes conveyed by the text. For example, if you input
-    a sentence like "I love this new smartphone!", the sentiment analyzer would detect the positive sentiment due to the use of the word "love" and 
-    the overall enthusiastic tone. Conversely, a sentence like "I am really disappointed with this service" would be classified as negative, reflecting 
-    dissatisfaction. This tool is widely used in customer feedback analysis, social media monitoring, and other applications where understanding emotional responses is crucial.
+    With advancements in natural language processing, predictive analytics has become indispensable for anticipating outcomes based on data-driven insights. 
+    In this application, we harness the power of machine learning algorithms to make accurate predictions from input data. 
+    The predictive model scrutinizes diverse linguistic nuances such as word choice, context, and syntactical structures to decipher underlying sentiments and emotional tones within text. 
+    For instance, a statement like "I love this new smartphone!" would be recognized positively due to the use of affirmative language and enthusiastic expressions. 
+    Conversely, phrases such as "I am really disappointed with this service" convey negative sentiments, reflecting dissatisfaction.
+    This tool is pivotal in various domains, including customer feedback analysis and social media monitoring, where understanding emotional responses is critical for informed decision-making and proactive strategies.
     """, unsafe_allow_html=True)
