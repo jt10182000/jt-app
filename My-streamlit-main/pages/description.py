@@ -2,30 +2,6 @@ import streamlit as st
 
 st.title("Description of Different Streamlit Application")
 
-st.header('Simple Sentiment Analyzer App')
-st.image("My-streamlit-main/pic/analyze.png")
-
-with st.expander("🔮Sentiment Analyzer"):
-     st.markdown("""
-    A Sentiment Analyzer is a powerful tool in natural language processing that evaluates text to determine the underlying sentiment or emotional tone.
-    """)
-
-st.header('Fruit Image Classification')
-st.image("My-streamlit-main/pic/Fruit1.png", "My-streamlit-main/pic/Fruit2.png", use_column_width=True)
-
-with st.expander("Fruit Image Classification Project"):
-    st.markdown("""
-    Image Classification: Classify fruit images into different categories.
-    """)
-
-st.header('🔍 Prediction')
-st.image("My-streamlit-main/pic/predictresult.png", use_column_width=True)
-
-with st.expander("Sentiment Analyzer"):
-    st.markdown("""
-    A Sentiment Analyzer is a powerful tool in natural language processing.
-    """)
-
 
 st.header('Simple Sentiment Analyzer App')
 st.image("My-streamlit-main/pic/analyze.png")
